@@ -29,9 +29,10 @@ jobs:
 
       - name: Build report
         run: |
-          python devops_hunter.py --out site --html-report
+          python devops_hunter.py
           # Make the report the site index
-          mv site/devops_report.html site/index.html
+          mkdir site
+          mv .data/devops_report.html site/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
