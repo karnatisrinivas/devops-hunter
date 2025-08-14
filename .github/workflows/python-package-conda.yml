@@ -32,7 +32,7 @@ jobs:
           python devops_hunter.py
           # Make the report the site index
           mkdir site
-          mv .data/devops_report.html site/index.html
+          mv data/devops_report.html site/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
