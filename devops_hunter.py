@@ -396,18 +396,19 @@ def generate_html_report(data: Dict[str, Any], path: str) -> str:
     head = html_head()
     header = f'<h1>DevOps Report</h1><div class="small">Generated at {html.escape(ts())}</div><hr>'
     body = ""
-
-    repos = data.get("github_repos", [])
     blogs = data.get("blog_posts", [])
+    repos = data.get("github_repos", [])
     jobs  = data.get("job_listings", [])
+    
+    if blogs:
+        items = "".join(blog_card(p) for p in blogs[:40])
+        body += html_section("Recent Blog Posts", items, len(blogs))
+
 
     if repos:
         items = "".join(repo_card(r) for r in repos[:40])
         body += html_section("Top GitHub Repos (DevOps/SRE/Platform)", items, len(repos))
 
-    if blogs:
-        items = "".join(blog_card(p) for p in blogs[:40])
-        body += html_section("Recent Blog Posts", items, len(blogs))
 
     if jobs:
         items = "".join(job_card(j) for j in jobs[:40])
