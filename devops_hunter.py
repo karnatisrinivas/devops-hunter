@@ -432,7 +432,7 @@ async def main() -> None:
     save_json(os.path.join(OUT_DIR, "blog_results_devops.json"), blogs)
     save_json(os.path.join(OUT_DIR, "job_results_devops.json"), jobs)
 
-    combined = {"generated_at": ts(), "github_repos": gh_repos, "blog_posts": blogs, "job_listings": jobs}
+    combined = {"generated_at": ts(),"blog_posts": blogs, "github_repos": gh_repos,  "job_listings": jobs}
     save_json(os.path.join(OUT_DIR, "devops_combined.json"), combined)
 
     report_path = os.path.join(OUT_DIR, "devops_report.html")
